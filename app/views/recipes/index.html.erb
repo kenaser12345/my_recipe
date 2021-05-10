@@ -1,0 +1,11 @@
+<h1>食譜</h1>
+<%= link_to "新增", new_recipe_path %>
+
+<% @recipes.each do |recipe| %>
+  <div>
+    <%= link_to recipe.name, recipe_path(recipe.id) %>
+    <%= link_to "編輯", edit_recipe_path(recipe.id) %>
+    <%= link_to "刪除", recipe_path(recipe.id), method: :delete %>
+  </div>  
+<% end %>
+

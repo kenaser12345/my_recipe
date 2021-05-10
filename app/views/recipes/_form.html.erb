@@ -1,0 +1,20 @@
+
+<%= form_for recipe do |f| %>
+  <div>
+    <%= f.label "名稱" %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label "簡介" %>
+    <%= f.text_field :description %>
+  </div>
+  <div>
+    <%= f.label "所需時間" %>
+    <%= f.text_field :time %>
+  </div>
+  <div>
+    <%= f.label "份量" %>
+    <%= f.text_field :quantity %>
+  </div>
+  <%= f.submit "建立", value: "Submit" %>
+<% end %>    
