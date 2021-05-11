@@ -1,6 +1,11 @@
 
 <%= form_for recipe do |f| %>
   <div>
+    <%= f.label "圖片" %>
+    <%= image_tag recipe.image.thumb.url if recipe.image? %>
+    <%= f.file_field :image %>
+  </div>
+  <div>
     <%= f.label "名稱" %>
     <%= f.text_field :name %>
   </div>
