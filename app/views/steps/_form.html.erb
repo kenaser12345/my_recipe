@@ -1,0 +1,18 @@
+<%= form_for step, url: recipe_steps_path, action: "create" do |f| %>
+  <div>
+    <%= f.label "圖片" %>
+    <%= image_tag step.image.thumb.url if step.image? %>
+      <label class="btn btn-info" style="width: 50px; height: 50px;">
+        <%= f.file_field :image, class: "d-none" %>
+      </label>
+  </div>
+  <div>
+    <%= f.label "步驟" %>
+    <%= f.text_field :sequence %>
+  </div>
+  <div>
+    <%= f.label "描述" %>
+    <%= f.text_field :description %>
+  </div>
+  <%= f.submit "建立", value: "Submit" %>
+<% end %>    

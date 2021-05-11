@@ -5,6 +5,7 @@
   <div>
     <%= image_tag recipe.image.thumb.url if recipe.image?  %>
     <%= link_to recipe.name, recipe_path(recipe.id) %>
+    <%= link_to "步驟", recipe_steps_path(recipe.id) %>
     <%= link_to "編輯", edit_recipe_path(recipe.id) %>
     <%= link_to "刪除", recipe_path(recipe.id), method: :delete %>
   </div>  

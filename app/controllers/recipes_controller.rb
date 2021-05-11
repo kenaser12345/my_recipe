@@ -46,8 +46,7 @@ class RecipesController < ApplicationController
                                     :name,
                                     :description,
                                     :time,
-                                    :quantity,
-                                    :image
+                                    :quantity
                                   )
   end  
 end

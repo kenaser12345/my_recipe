@@ -1,0 +1,10 @@
+<%= link_to "新增", new_recipe_step_path %>
+<% @steps.each do |step| %>
+  <div>
+    <%= image_tag step.image.thumb.url if step.image? %>
+    <%= step.description %>
+    <%= step.sequence %>
+    <%= link_to "編輯", edit_recipe_step_path(step.recipe_id, step.id) %>
+    <%= link_to "刪除", recipe_step_path(step.recipe_id,step.id), method: "delete" %>
+  </div>
+<% end %>

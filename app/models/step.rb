@@ -1,3 +1,4 @@
 class Step < ApplicationRecord
-  belongs_to :menu
+  mount_uploader :image, ImageUploader
+  belongs_to :recipe
 end

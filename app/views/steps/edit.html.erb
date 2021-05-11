@@ -1,0 +1,17 @@
+<%= form_for @step, url: recipe_step_path, action: "update", html: {method: "patch"} do |f| %>
+  <div>
+    <%= f.label "圖片" %>
+      <label class="btn btn-info" style="width: 50px; height: 50px;">
+        <%= f.file_field :image, class: "d-none" %>
+      </label>
+  </div>
+  <div>
+    <%= f.label "步驟" %>
+    <%= f.text_field :sequence %>
+  </div>
+  <div>
+    <%= f.label "描述" %>
+    <%= f.text_field :description %>
+  </div>
+  <%= f.submit "建立", value: "Submit" %>
+<% end %>     
