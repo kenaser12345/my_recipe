@@ -19,6 +19,9 @@ class StepsController < ApplicationController
   end
 
   def destroy
+    step = current_user.recipes.find(params[:recipe_id]).steps.find(params[:id])
+    step.destroy
+    redirect_to recipe_steps_path
   end
 
   def edit
@@ -26,6 +29,12 @@ class StepsController < ApplicationController
   end
 
   def update
+    step = current_user.recipes.find(params[:recipe_id]).steps.find(params[:id])
+    if step.update(step_params)
+      redirect_to recipe_steps_path
+    else
+      render :edit
+    end
   end
 
   private
