@@ -2,4 +2,16 @@
   margin-bottom: 20px;
   text-align: center;
   font-size: 20px;
+  .upload_section{
+    background-color: grey;
+    .recipe_img{
+      
+    }
+    .default_image{
+      max-height: 50%;  
+      max-width: 50%; 
+      width: auto;
+      height: auto;
+    }
+  }
 }

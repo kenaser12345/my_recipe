@@ -20,3 +20,4 @@ ActiveStorage.start()
 
 import $ from 'jquery'
 window.$ = $
+import "controllers"
