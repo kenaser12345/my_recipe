@@ -1,27 +1,29 @@
 
 <%= form_for recipe do |f| %>
-  <div>
-    <%= f.label "圖片" %>
-    <%= image_tag recipe.image.thumb.url if recipe.image? %>
-      <label class="btn btn-info" style="width: 50px; height: 50px;">
-        <%= f.file_field :image, class: "d-none" %>
-      </label>
+  <div class="form_section">
+    <%= f.label "食譜名稱", class:"form-label form_title" %>
+    <%= f.text_field :name, class: "form-control"%>
   </div>
-  <div>
-    <%= f.label "名稱" %>
-    <%= f.text_field :name %>
+  <div class="form_section">
+    <%= f.label "圖片", class:"form-label form_title" %>
+      <div>
+        <%= image_tag recipe.image.thumb.url if recipe.image? %>
+        <label class="btn btn-info" style="width: 50px; height: 50px;">
+          <%= f.file_field :image, class: "d-none" %>
+        </label>
+      </div>
   </div>
-  <div>
-    <%= f.label "簡介" %>
-    <%= f.text_field :description %>
+  <div class="form_section">
+    <%= f.label "簡介", class:"form-label form_title" %>
+    <%= f.text_area :description, class: "form-control", rows: "3" %>
   </div>
-  <div>
-    <%= f.label "所需時間" %>
-    <%= f.text_field :time %>
+  <div class="form_section">
+    <%= f.label "所需時間", class:"form-label form_title" %>
+    <%= f.text_field :time, class: "form-control" %>
   </div>
-  <div>
-    <%= f.label "份量" %>
-    <%= f.text_field :quantity %>
+  <div class="form_section">
+    <%= f.label "份量", class:"form-label form_title" %>
+    <%= f.text_field :quantity, class: "form-control" %>
   </div>
-  <%= f.submit "建立", value: "Submit" %>
+  <%= f.submit "建立" %>
 <% end %>    

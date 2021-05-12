@@ -1,1 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
+
+body{
+  background-color: #efede8;
+  .main_bg{
+    width: 80%;
+    height: 100VH;  
+    background-color: #ffffff;
+  }
+}
