@@ -39,7 +39,12 @@ class StepsController < ApplicationController
 
   private
   def step_params
-    params.require(:step).permit(:image, :description, :sequence, :recipe_id, :user_id)
+    params.require(:step).permit( :image, 
+                                  :description, 
+                                  :sequence,
+                                  :recipe_id, 
+                                  :user_id
+                                )
     
   end
 end

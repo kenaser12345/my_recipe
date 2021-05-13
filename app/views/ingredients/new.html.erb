@@ -1,0 +1,7 @@
+<%= form_for @ingredient do |f| %>
+  <div class="form_section">
+    <%= f.label "食材名稱", class:"form-label" %>
+    <%= f.text_field :name, class: "form-control"%>
+  </div>
+  <%= f.submit "建立" %>
+<% end %>    

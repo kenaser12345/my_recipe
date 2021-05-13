@@ -1,0 +1,8 @@
+<%= link_to "新增食材", new_ingredient_path %>
+<% @ingredients.each do |ingredient| %>
+  <div>
+    <%= link_to ingredient.name, ingredient_path(ingredient.id) %>
+    <%= link_to "編輯", edit_ingredient_path(ingredient.id) %>
+    <%= link_to "刪除", ingredient_path(ingredient.id), method: "delete" %>
+  </div>  
+<% end %>
