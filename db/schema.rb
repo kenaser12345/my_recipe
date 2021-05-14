@@ -21,13 +21,13 @@ ActiveRecord::Schema.define(version: 2021_05_07_154355) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "ingredients_list", force: :cascade do |t|
+  create_table "ingredients_lists", force: :cascade do |t|
     t.bigint "recipe_id"
     t.bigint "ingredient_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["ingredient_id"], name: "index_ingredients_list_on_ingredient_id"
-    t.index ["recipe_id"], name: "index_ingredients_list_on_recipe_id"
+    t.index ["ingredient_id"], name: "index_ingredients_lists_on_ingredient_id"
+    t.index ["recipe_id"], name: "index_ingredients_lists_on_recipe_id"
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(version: 2021_05_07_154355) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "ingredients_list", "ingredients"
-  add_foreign_key "ingredients_list", "recipes"
+  add_foreign_key "ingredients_lists", "ingredients"
+  add_foreign_key "ingredients_lists", "recipes"
   add_foreign_key "recipes", "users"
   add_foreign_key "steps", "recipes"
 end

@@ -2,7 +2,22 @@ class Recipe < ApplicationRecord
   mount_uploader :image, ImageUploader
   
   has_many :steps, dependent: :destroy
-  has_many :ingredients_list, dependent: :destroy
-  has_many :ingredients, through: :ingredients_list
+  has_many :ingredients_lists, dependent: :destroy
+  has_many :ingredients, through: :ingredients_lists
   belongs_to :user
+
+
+  def ingredient_tags
+    Ingredient.all.map { |i| [i.name, i.name]}
+  end
+
+  def ingredient_items
+    Ingredient.all.map(&:name)
+  end
+
+  def ingredient_items=(names)
+    byebug
+    self.ingredients = names.map{|item|
+      Ingredient.where(name: item.strip).first_or_create! unless item.blank?}
+  end
 end

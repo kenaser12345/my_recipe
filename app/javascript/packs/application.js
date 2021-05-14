@@ -3,9 +3,7 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
+
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
@@ -14,18 +12,24 @@ import "channels"
 import "bootstrap";
 import "controllers";
 import $ from 'jquery'
+import "select2/dist/css/select2.min.css";
+import "select2/dist/js/select2.full.min.js";
 
-import select2 from 'select2'
-import 'select2/dist/css/select2.css'
+Rails.start()
+Turbolinks.start()
+ActiveStorage.start()
+
+
 window.$ = $
+
 $(document).ready(function() {
-  $('select').select2();
+  $('select').select2({
+    tags: true,
+    tokenSeparators: [',', ' ']
+  }
+  );
 });
 
 require("styles")
 require("bootstrap")
 require("select2")
-
-
-
-

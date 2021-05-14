@@ -29,5 +29,9 @@
     <%= f.label "份量(人份)", class:"form-label form_title" %>
     <%= f.text_field :quantity, class: "form-control" %>
   </div>
+  <div class="form_section" data-controller="form">
+    <%= f.label "食材", class:"form-label form_title" %>
+    <%= f.select :ingredient_items, options_for_select(recipe.ingredient_tags, recipe.ingredient_tags),{:include_hidden => false}, {:multiple => true, :class => "form-control"} %>
+  </div>
   <%= f.submit "建立" %>
 <% end %>    

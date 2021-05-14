@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "recipe_img", "img_input" ]
+  static targets = [ "recipe_img", "img_input", "tag_select" ]
 
   upload_preview(){
     const input = this.img_inputTarget
@@ -15,4 +15,5 @@ export default class extends Controller {
       reader.readAsDataURL(input.files[0]);
     }
   }
+
 }
