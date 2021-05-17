@@ -1,0 +1,19 @@
+.registration_section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 10%;
+  .card{
+    width: 500px;
+    .card-body{
+      .new_user{
+        .form-group{
+          width: 90%;
+          margin: auto;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
