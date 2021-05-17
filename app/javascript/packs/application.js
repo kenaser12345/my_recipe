@@ -21,14 +21,13 @@ ActiveStorage.start()
 
 
 window.$ = $
-
-$(document).ready(function() {
+$(window).on('turbolinks:load', function(){
   $('select').select2({
-    tags: true,
-    tokenSeparators: [',', ' ']
-  }
-  );
-});
+      tags: true,
+      tokenSeparators: [',', ' ']
+    }
+    );
+})
 
 require("styles")
 require("bootstrap")

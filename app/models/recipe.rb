@@ -6,6 +6,7 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :ingredients_lists
   belongs_to :user
 
+  accepts_nested_attributes_for :steps
 
   def ingredient_tags
     Ingredient.all.map { |i| [i.name, i.name]}
@@ -16,7 +17,6 @@ class Recipe < ApplicationRecord
   end
 
   def ingredient_items=(names)
-    byebug
     self.ingredients = names.map{|item|
       Ingredient.where(name: item.strip).first_or_create! unless item.blank?}
   end

@@ -6,6 +6,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @recipe.steps.new("sequence" => "1")
   end
 
   def create
@@ -48,7 +49,8 @@ class RecipesController < ApplicationController
                                     :time,
                                     :quantity,
                                     :image,
-                                    ingredient_items: []
+                                    steps_attributes: [:id, :image, :sequence, :description],
+                                    ingredient_items: [],
                                   )
   end  
 end

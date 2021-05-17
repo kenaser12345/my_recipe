@@ -4,7 +4,8 @@ body{
   background-color: #efede8;
   .main_bg{
     width: 80%;
-    height: 100VH;  
+    min-height: 100vh;
+    height: auto;  
     background-color: #ffffff;
   }
 }
