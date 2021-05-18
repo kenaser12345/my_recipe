@@ -38,6 +38,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :thumb do
     process :resize_to_fit => [200, 200]
   end
+  
+  version :big do
+    process :resize_to_fit => [700, 700]
+  end
+
   # 如果需要更小的圖片尺寸，可以透過 from_version 選項，
   # 從指定的版本(thumb)製作縮圖，執行效能會比從原圖製作好。
   version :small_thumb, from_version: :thumb do

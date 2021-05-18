@@ -1,18 +1,31 @@
-<table>
-  <tr>
-    <th>名稱</th>
-    <td><%= @recipe.name %></td>
-  </tr>
-  <tr>
-    <th>簡介</th>
-    <td><%= @recipe.description %></td>
-  </tr>
-  <tr>
-    <th>所需時間</th>
-    <td><%= @recipe.time %></td>
-  </tr>
-  <tr>
-    <th>份數</th>
-    <td><%= @recipe.quantity %></td>
-  </tr>
-</table>
+<div class="recipe_info_group">
+  <%= image_tag @recipe.image.big.url, class: "recipe_image"%>
+  <h1 class="recipe_title"><%= @recipe.name %></h1> 
+  <p class="recipe_description"><%= @recipe.description %></p>
+</div>
+<div class="recipe_time">
+  <p>所需時間</p>
+  <%= @recipe.time %>分
+</div>
+<div class="recipe_ingredients">
+  <p>食材</p>
+  <% @recipe.ingredients.each do |ingredient| %>
+    <span class="ingredient"><%= ingredient.name %></span>
+  <% end %>
+</div>
+<div class="recipe_steps">
+  <% @recipe.steps.each do |step| %>
+  <div class="step_item">
+    <div class="step_instruction">
+      <div class="step_image">
+        <%= image_tag step.image.thumb.url %>
+      </div>
+      <div class="step_info">
+        <h1 class="step_sequence"><%= step.sequence %></h1>
+        <section class="step_description"><%= step.description %></section>
+      </div>
+    </div>
+  </div>
+
+  <% end %>
+</div>

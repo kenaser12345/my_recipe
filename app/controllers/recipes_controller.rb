@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!
+  layout 'homepage'
   def index
     @recipes = current_user.recipes.all
   end
