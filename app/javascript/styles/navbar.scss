@@ -1,3 +1,15 @@
 .navbar-collapse{
   justify-content: flex-end;
 }
+
+.navbar-nav{
+  .nav-item{
+    .nav-link{
+      display: flex;
+      .recipe_new{
+        margin: 0 auto;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

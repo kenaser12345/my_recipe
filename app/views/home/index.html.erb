@@ -1,0 +1,7 @@
+<div class="show_recipes_place">
+  <% @recipes.each do |recipe| %>
+    <div class="recipe_item">
+      <%= image_tag recipe.image.middle.url %>
+    </div>
+  <% end %>  
+</div>

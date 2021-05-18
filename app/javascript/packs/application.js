@@ -14,6 +14,8 @@ import "controllers";
 import $ from 'jquery'
 import "select2/dist/css/select2.min.css";
 import "select2/dist/js/select2.full.min.js";
+import '@fortawesome/fontawesome-free/js/all';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 Rails.start()
 Turbolinks.start()

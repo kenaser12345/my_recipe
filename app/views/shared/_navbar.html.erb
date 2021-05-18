@@ -8,6 +8,14 @@
       <ul class="navbar-nav mb-2 mb-lg-0">
       <% if current_user %>
         <li class="nav-item">
+          <%= link_to new_recipe_path, class: "nav-link" do %>
+            <p class="recipe_new">
+              新增食譜
+              <i class="far fa-plus-square"></i>
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
           <%= link_to current_user.email, "#", class: "nav-link" %>
         </li>
         <li class="nav-item">
