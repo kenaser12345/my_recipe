@@ -13,8 +13,8 @@
 </div>
 <div class="recipe_ingredients">
   <p>食材</p>
-  <% @recipe.ingredients.each do |ingredient| %>
-    <span class="ingredient"><%= ingredient.name %></span>
+  <% @ingredients_lists.each do |list| %>
+    <span class="ingredient"><%= list.ingredient.name %><%= list.amount %></span>
   <% end %>
 </div>
 <div class="recipe_steps">

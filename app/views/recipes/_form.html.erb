@@ -29,10 +29,17 @@
     <%= f.label "份量(人份)", class:"form-label form_title" %>
     <%= f.text_field :quantity, class: "form-control" %>
   </div>
-  <div class="form_section">
-    <%= f.label "食材", class:"form-label form_title" %>
-    <%= f.select :ingredient_items, options_for_select(recipe.ingredient_tags, recipe.ingredient_tags),{:include_hidden => false}, {:multiple => true, :class => "form-control"} %>
-  </div>
+  <%= f.fields_for :ingredients do |af| %>
+    <div class="form_section">
+      <%= af.label "食材", class:"form-label form_title" %>
+      <div class="ingredient_input">
+        <%= af.text_field :name, placeholder: "食材", class: "form-control" %>
+        <%= af.fields_for :ingredients_lists do |aaf| %>
+            <%= aaf.text_field :amount, placeholder: "份量", class: "form-control" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
   <div class="form_section" >
     <%= f.label "步驟", class:"form-label form_title" %>
     <%= f.fields_for :steps do |ff| %>

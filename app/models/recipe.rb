@@ -7,9 +7,12 @@ class Recipe < ApplicationRecord
   belongs_to :user
 
   accepts_nested_attributes_for :steps
+  accepts_nested_attributes_for :ingredients
+  accepts_nested_attributes_for :ingredients_lists
 
   validates :name, :description, presence: true
   validates :time, :quantity, presence:true, numericality: { only_integer: true, greater_than: 0 }
+  
   def ingredient_tags
     Ingredient.all.map { |i| [i.name, i.name]}
   end

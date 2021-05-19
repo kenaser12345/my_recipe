@@ -7,12 +7,17 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     @recipe.steps.new("sequence" => "1")
+    ingredient = @recipe.ingredients.new
+    ingredient.ingredients_lists.new
   end
 
   def create
-    @recipe = current_user.recipes.build(recipe_params)
-
-    if @recipe.save
+    list_params = pick_ingredients_lists_params
+    fixed_params = delete_list_params(recipe_params)
+  
+    @recipe = current_user.recipes.build(fixed_params)
+    if @recipe.save!
+      set_all_ingredient_amount(@recipe, list_params)
       redirect_to recipes_path
     else
       render :new
@@ -21,6 +26,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @ingredients_lists = @recipe.ingredients_lists
   end
 
   def destroy
@@ -49,8 +55,31 @@ class RecipesController < ApplicationController
                                     :time,
                                     :quantity,
                                     :image,
-                                    steps_attributes: [:id, :image, :sequence, :description],
-                                    ingredient_items: [],
+                                    steps_attributes: [:image, :sequence, :description],
+                                    ingredients_attributes: [:name, ingredients_lists_attributes: [:amount]]
+                                    
                                   )
   end  
+
+  def pick_ingredients_lists_params
+    # 取得ingredient_list參數
+    list_params = recipe_params[:ingredients_attributes].values[0][:ingredients_lists_attributes].values[0][:amount]
+    return list_params
+  end
+
+  def delete_list_params(params)
+    output = params
+    output[:ingredients_attributes].values[0].delete(:ingredients_lists_attributes)
+    output
+  end
+
+  def set_all_ingredient_amount(recipe, list_params)
+    ids_array = recipe.ingredients.ids
+    i = 0
+    while i < ids_array.length
+      recipe.ingredients_lists.find_by(ingredient_id: ids_array[i]).amount = list_params[i]
+
+      i += 1
+    end
+  end
 end
