@@ -1,5 +1,4 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!
   layout 'homepage'
   def index
     @recipes = current_user.recipes.all
@@ -21,7 +20,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = current_user.recipes.find(params[:id])
+    @recipe = Recipe.find(params[:id])
   end
 
   def destroy

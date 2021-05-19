@@ -1,7 +1,9 @@
 <div class="show_recipes_place">
   <% @recipes.each do |recipe| %>
     <div class="recipe_item">
-      <%= image_tag recipe.image.middle.url %>
+      <%= link_to recipe_path(recipe.id) do %>
+        <%= image_tag recipe.image.middle.url %>
+      <% end %>
     </div>
   <% end %>  
 </div>

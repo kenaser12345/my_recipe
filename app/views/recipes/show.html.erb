@@ -7,6 +7,10 @@
   <p>所需時間</p>
   <%= @recipe.time %>分
 </div>
+<div class="recipe_quantity">
+  <p>份量</p>
+  <%= @recipe.time %>人份
+</div>
 <div class="recipe_ingredients">
   <p>食材</p>
   <% @recipe.ingredients.each do |ingredient| %>
@@ -18,7 +22,7 @@
   <div class="step_item">
     <div class="step_instruction">
       <div class="step_image">
-        <%= image_tag step.image.thumb.url %>
+        <%= image_tag step.image.thumb.url if step.image? %>
       </div>
       <div class="step_info">
         <h1 class="step_sequence"><%= step.sequence %></h1>
