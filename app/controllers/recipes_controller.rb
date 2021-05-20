@@ -57,6 +57,13 @@ class RecipesController < ApplicationController
     render "add_ingredient", :layout => false  
   end
 
+  #Ajax add step
+  def add_step
+    @recipe = Recipe.new
+    step = @recipe.steps.new
+    render "add_step", :layout => false
+  end
+
   private
   def recipe_params
     params.require(:recipe).permit(

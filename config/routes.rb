@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     end
     collection do 
       get :add_ingredient
+      get :add_step
     end
   end
 

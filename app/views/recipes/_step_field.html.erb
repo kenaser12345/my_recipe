@@ -1,0 +1,14 @@
+<%= f.fields_for :steps, :child_index => child_index do |ff| %>
+  <div class="step_form_group" data-controller="form">
+    <div class="step_image_upload_section">
+      <label>
+        <%= image_tag "cat.png", class: "step_default_image", "data-target" => "form.recipe_img" %>
+        <%= ff.file_field :image, class: "d-none", "data-target" => "form.img_input", "data-action" => "change->form#upload_preview" %>
+      </label>
+    </div>
+    <div class="step_description_section">
+      <%= ff.text_field :sequence, class: "form-control step_sequence" %>
+      <%= ff.text_area :description, class: "form-control step_description"%>
+    </div>
+  </div>
+<% end %>

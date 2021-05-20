@@ -33,26 +33,22 @@
       <%= f.label "食材", class:"form-label form_title" %>
       <%= render :partial => "ingredient_field", locals: {f: f, child_index: Time.now.to_i} %>
     </div>
-    <button class="add_ingredient_btn" data-target="form.add_ingredient_btn" data-action="click -> form#add_ingredient">
-      add ingredient 
-    </button>
+    <div class="add_ingredient_section">
+      <button class="add_ingredient_btn btn btn-outline-dark" data-target="form.add_ingredient_btn" data-action="click -> form#add_ingredient">
+        <i class="fas fa-plus"></i>
+      </button>
+    </div>
   </div>
-  <div class="form_section" >
-    <%= f.label "步驟", class:"form-label form_title" %>
-    <%= f.fields_for :steps do |ff| %>
-      <div class="step_form_group" data-controller="form">
-        <div class="step_image_upload_section">
-          <label>
-            <%= image_tag "cat.png", class: "step_default_image", "data-target" => "form.recipe_img" %>
-            <%= ff.file_field :image, class: "d-none", "data-target" => "form.img_input", "data-action" => "change->form#upload_preview" %>
-          </label>
-        </div>
-        <div class="step_description_section">
-          <%= ff.text_field :sequence, class: "form-control step_sequence" %>
-          <%= ff.text_area :description, class: "form-control step_description"%>
-        </div>
-      </div>
-    <% end %>
+  <div class="step_section" data-controller="form">
+    <div class="form_section" >
+      <%= f.label "步驟", class:"form-label form_title" %>
+      <%= render :partial => "step_field", locals: {f: f, child_index: Time.now.to_i} %>
+    </div>
+    <div class="add_step_section">
+      <button class="add_step_btn btn btn-outline-dark" data-target="form.add_step_btn" data-action="click -> form#add_step">
+        <i class="fas fa-plus"></i>
+      </button>
+    </div>
   </div>
 
   <%= f.submit "建立" %>
