@@ -1,0 +1,10 @@
+<%= f.fields_for :ingredients, :child_index => child_index do |af| %>
+
+    <div class="ingredient_input">
+      <%= af.text_field :name, placeholder: "食材", class: "form-control" %>
+      <%= af.fields_for :ingredients_lists do |aaf| %>
+          <%= aaf.text_field :amount, placeholder: "份量", class: "form-control" %>
+      <% end %>
+    </div>
+  
+<% end %>

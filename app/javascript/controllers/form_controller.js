@@ -1,7 +1,8 @@
 import { Controller } from "stimulus"
+import Rails from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = [ "recipe_img", "img_input", "tag_select" ]
+  static targets = [ "recipe_img", "img_input", "tag_select", "add_ingredient_btn"]
 
   upload_preview(){
     const input = this.img_inputTarget
@@ -16,4 +17,23 @@ export default class extends Controller {
     }
   }
 
+  add_ingredient(e){
+    e.preventDefault();
+
+    Rails.ajax({
+      url: "add_ingredient",
+      type: "GET",
+      dataType: "json",
+      success: resp => {  
+        console.log(resp.documentElement.querySelector(".ingredient_input"))     
+        const el_to_add = resp.documentElement.querySelector(".ingredient_input")
+        document.querySelector(".ingredient_section .form_section").append(el_to_add)
+      },
+      error: err => {
+        console.log(err)
+      }
+
+    })
+
+  }
 }

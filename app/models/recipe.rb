@@ -13,16 +13,9 @@ class Recipe < ApplicationRecord
   validates :name, :description, presence: true
   validates :time, :quantity, presence:true, numericality: { only_integer: true, greater_than: 0 }
   
-  def ingredient_tags
-    Ingredient.all.map { |i| [i.name, i.name]}
-  end
-
-  def ingredient_items
-    Ingredient.all.map(&:name)
-  end
-
-  def ingredient_items=(names)
-    self.ingredients = names.map{|item|
-      Ingredient.where(name: item.strip).first_or_create! unless item.blank?}
+  def self.build
+    recipe = self.new
+    recipe.ingredients.build
+    recipe
   end
 end

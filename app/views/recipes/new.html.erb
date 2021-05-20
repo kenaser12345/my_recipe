@@ -1,2 +1,60 @@
-<h1>建立食譜</h1>
-<%= render "form", recipe: @recipe %>
+<%= form_for @recipe do |f| %>
+  <div class="form_section">
+    <%= f.label "食譜名稱", class:"form-label form_title" %>
+    <%= f.text_field :name, class: "form-control"%>
+  </div>
+  <div class="form_section" data-controller="form" >
+    <%= f.label "圖片", class:"form-label form_title" %>
+      <div class="upload_section">
+        <label>
+          <% if @recipe.image? %>
+            <%= image_tag @recipe.image.thumb.url, class: "recipe_img"%>
+          <% else %>
+            <%= image_tag "cat.png", class: "default_image", "data-target" => "form.recipe_img" %>
+          <% end %>
+          <%= f.file_field :image, class: "d-none", "data-target" => "form.img_input", "data-action" => "change->form#upload_preview" %>
+        </label>
+      </div>
+  </div>
+  <div class="form_section">
+    <%= f.label "簡介", class:"form-label form_title" %>
+    <%= f.text_area :description, class: "form-control", rows: "3" %>
+  </div>
+  <div class="form_section">
+    <%= f.label "所需時間(分鐘)", class:"form-label form_title" %>
+    <%= f.text_field :time, class: "form-control" %>
+  </div>
+  <div class="form_section">
+    <%= f.label "份量(人份)", class:"form-label form_title" %>
+    <%= f.text_field :quantity, class: "form-control" %>
+  </div>
+  <div class="ingredient_section" data-controller="form">
+    <% child_index = Time.now.to_i %>
+    <div class="form_section">
+      <%= f.label "食材", class:"form-label form_title" %>
+      <%= render :partial => "ingredient_field", locals: {f: f, child_index: child_index} %>
+    </div>
+    <button class="add_ingredient_btn" data-target="form.add_ingredient_btn" data-action="click -> form#add_ingredient">
+      add ingredient 
+    </button>
+  </div>
+  <div class="form_section" >
+    <%= f.label "步驟", class:"form-label form_title" %>
+    <%= f.fields_for :steps do |ff| %>
+      <div class="step_form_group" data-controller="form">
+        <div class="step_image_upload_section">
+          <label>
+            <%= image_tag "cat.png", class: "step_default_image", "data-target" => "form.recipe_img" %>
+            <%= ff.file_field :image, class: "d-none", "data-target" => "form.img_input", "data-action" => "change->form#upload_preview" %>
+          </label>
+        </div>
+        <div class="step_description_section">
+          <%= ff.text_field :sequence, class: "form-control step_sequence" %>
+          <%= ff.text_area :description, class: "form-control step_description"%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%= f.submit "建立" %>
+<% end %>    
