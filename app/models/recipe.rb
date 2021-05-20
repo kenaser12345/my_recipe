@@ -13,9 +13,4 @@ class Recipe < ApplicationRecord
   validates :name, :description, presence: true
   validates :time, :quantity, presence:true, numericality: { only_integer: true, greater_than: 0 }
   
-  def self.build
-    recipe = self.new
-    recipe.ingredients.build
-    recipe
-  end
 end

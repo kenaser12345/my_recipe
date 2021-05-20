@@ -16,6 +16,7 @@ class RecipesController < ApplicationController
     fixed_params = delete_list_params(recipe_params)
   
     @recipe = current_user.recipes.build(fixed_params)
+
     if @recipe.save!
       set_all_ingredient_amount(@recipe, list_params)
       redirect_to recipes_path
@@ -50,7 +51,9 @@ class RecipesController < ApplicationController
 
   #Ajax add ingredient
   def add_ingredient
-    @recipe = Recipe.build
+    @recipe = Recipe.new
+    ingredient = @recipe.ingredients.new
+    ingredient.ingredients_lists.new
     render "add_ingredient", :layout => false  
   end
 
@@ -70,22 +73,23 @@ class RecipesController < ApplicationController
 
   def pick_ingredients_lists_params
     # 取得ingredient_list參數
-    list_params = recipe_params[:ingredients_attributes].values[0][:ingredients_lists_attributes].values[0][:amount]
-    return list_params
+    list_params_array = recipe_params[:ingredients_attributes].values.map{|a| a[:ingredients_lists_attributes].values[0][:amount]}
+    return list_params_array
   end
 
   def delete_list_params(params)
     output = params
-    output[:ingredients_attributes].values[0].delete(:ingredients_lists_attributes)
+    output[:ingredients_attributes].values.map{|i| i.delete(:ingredients_lists_attributes)}
     output
   end
 
-  def set_all_ingredient_amount(recipe, list_params)
+  def set_all_ingredient_amount(recipe, list_params_array)
     ids_array = recipe.ingredients.ids
     i = 0
     while i < ids_array.length
-      recipe.ingredients_lists.find_by(ingredient_id: ids_array[i]).amount = list_params[i]
-
+      list = recipe.ingredients_lists.find_by(ingredient_id: ids_array[i])
+      list.amount = list_params_array[i]
+      list.save
       i += 1
     end
   end

@@ -29,10 +29,9 @@
     <%= f.text_field :quantity, class: "form-control" %>
   </div>
   <div class="ingredient_section" data-controller="form">
-    <% child_index = Time.now.to_i %>
     <div class="form_section">
       <%= f.label "食材", class:"form-label form_title" %>
-      <%= render :partial => "ingredient_field", locals: {f: f, child_index: child_index} %>
+      <%= render :partial => "ingredient_field", locals: {f: f, child_index: Time.now.to_i} %>
     </div>
     <button class="add_ingredient_btn" data-target="form.add_ingredient_btn" data-action="click -> form#add_ingredient">
       add ingredient 
