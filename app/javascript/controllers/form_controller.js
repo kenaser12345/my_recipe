@@ -2,8 +2,15 @@ import { Controller } from "stimulus"
 import Rails from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = [ "recipe_img", "img_input", "tag_select", "add_ingredient_btn", "add_step_btn"]
+  static targets = [ "recipe_img", "img_input", "tag_select", "add_ingredient_btn", "add_step_btn", "delete_ingredient_btn", "delete_step_btn"]
 
+  connect(){
+    $(document).keypress(function(e){
+      if (e.which == '13') {
+        e.preventDefault();
+      }
+    })
+  }
 
   upload_preview(){
     const input = this.img_inputTarget
@@ -61,5 +68,28 @@ export default class extends Controller {
       }
     })
 
+  }
+
+  delete_ingredient(e){
+    e.preventDefault()
+    const form = this.delete_ingredient_btnTarget.parentNode
+    form.parentNode.removeChild(form)
+  }
+
+  delete_step(e){
+    e.preventDefault()
+    const form = this.delete_step_btnTarget.parentNode
+    form.parentNode.removeChild(form)
+    
+    // set step sequence
+    const inputs = document.querySelectorAll(".step_sequence_input")
+    const sequence = document.querySelectorAll(".step_sequence")
+    inputs.forEach(function(step, i) {
+      step.value = i+1
+    })
+    sequence.forEach(function(seq, i) {
+      i = i+1
+      seq.innerHTML = "<h1>" + i + "</h1>"
+    })
   }
 }

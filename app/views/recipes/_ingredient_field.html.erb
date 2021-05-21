@@ -5,6 +5,8 @@
       <%= af.fields_for :ingredients_lists do |aaf| %>
           <%= aaf.text_field :amount, placeholder: "份量", class: "form-control" %>
       <% end %>
+      <button class=" delete_ingredient_btn btn btn-outline-dark" data-action="click->form#delete_ingredient" data-target="form.delete_ingredient_btn">
+        <i class="fas fa-trash"></i>
+      </button>
     </div>
-  
 <% end %>

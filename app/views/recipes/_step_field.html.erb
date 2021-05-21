@@ -11,5 +11,8 @@
       <%= ff.hidden_field :sequence, class: "form-control step_sequence_input" %>
       <%= ff.text_area :description, class: "form-control step_description"%>
     </div>
+    <button class=" delete_step_btn btn btn-outline-dark" data-action="click->form#delete_step" data-target="form.delete_step_btn">
+      <i class="fas fa-trash"></i>
+    </button>
   </div>
 <% end %>

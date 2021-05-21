@@ -20,7 +20,8 @@
   .step_form_group{
     display: flex;
     justify-content: space-around;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    
     .step_image_upload_section{
       width: 35%;
       height: 200px;
@@ -34,11 +35,14 @@
     }
     .step_description_section{
       width: 60%;
+      
       .step_sequence{
-        height: 20%;
+        text-align: left;
+        font-size: 45px;
+        font-weight: 600;
       }
       .step_description{
-        height: 80%;
+        height: 70%;
       }
     }
   }
