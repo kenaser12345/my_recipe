@@ -7,7 +7,8 @@
       </label>
     </div>
     <div class="step_description_section">
-      <%= ff.text_field :sequence, class: "form-control step_sequence" %>
+      <h1 class="step_sequence">1</h1>
+      <%= ff.hidden_field :sequence, class: "form-control step_sequence_input" %>
       <%= ff.text_area :description, class: "form-control step_description"%>
     </div>
   </div>

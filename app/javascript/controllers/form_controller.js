@@ -45,12 +45,16 @@ export default class extends Controller {
       success: resp => {  
         const el_to_add = resp.documentElement.querySelector(".step_form_group")
         document.querySelector(".step_section .form_section").append(el_to_add)
-        // check step sequence
-        const targets = document.querySelectorAll(".step_sequence")
-        targets.forEach(function(step, i) {
+        // set step sequence
+        const inputs = document.querySelectorAll(".step_sequence_input")
+        const sequence = document.querySelectorAll(".step_sequence")
+        inputs.forEach(function(step, i) {
           step.value = i+1
         })
-        
+        sequence.forEach(function(seq, i) {
+          i = i+1
+          seq.innerHTML = "<h1>" + i + "</h1>"
+        })
       },
       error: err => {
         console.log(err)
