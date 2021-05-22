@@ -1,7 +1,7 @@
 # 專案目的
-*練習使用nested form
-*練習使用圖片上傳功能(gem: carrierwave, rmagick)
-*client side validate(gem: client_side_validations  stimulus)
+* 練習使用nested form
+* 練習使用圖片上傳功能(gem: carrierwave, rmagick)
+* client side validate(gem: client_side_validations  stimulus)
 
 
 # 專案時程
