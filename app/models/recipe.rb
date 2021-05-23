@@ -11,6 +11,6 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :ingredients_lists
 
   validates :name, :description, presence: true
+  validates :image, :description, presence: true
   validates :time, :quantity, presence:true, numericality: { only_integer: true, greater_than: 0 }
-  
 end

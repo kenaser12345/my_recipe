@@ -37,7 +37,7 @@ export default class extends Controller {
         document.querySelector(".ingredient_section .form_section").append(el_to_add)
       },
       error: err => {
-        console.log(err)
+        
       }
     })
   }
@@ -64,7 +64,7 @@ export default class extends Controller {
         })
       },
       error: err => {
-        console.log(err)
+        
       }
     })
 

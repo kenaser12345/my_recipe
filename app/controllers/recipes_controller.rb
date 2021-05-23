@@ -17,11 +17,11 @@ class RecipesController < ApplicationController
   
     @recipe = current_user.recipes.build(fixed_params)
 
-    if @recipe.save!
+    if @recipe.save
       set_all_ingredient_amount(@recipe, list_params)
       redirect_to recipes_path
     else
-      render :new
+      render :new, notice: "似乎有那裡不對勁"
     end
   end
 

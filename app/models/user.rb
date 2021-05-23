@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :recipes
   has_many :steps, :through => :recipes
 
+  validates :email, format: { with: /\A[^@\s]+@[^@\s]+\z/ }, presence: true
 end
